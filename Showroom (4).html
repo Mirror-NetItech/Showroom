@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title> Mirror Network's Showroom</title>
+    <!-- ======================= -->
+    <!-- === Open Graph Tags === -->
+    <!-- ======================= -->
+
+    <!-- og:title -->
+    <meta property="og:title" content="Unveiling the Titan Tech Platform: A Speech by Mirror Network">
+
+    <!-- og:description -->
+    <meta property="og:description" content="Join us as Mirror Network delivers a pivotal speech introducing the groundbreaking Titan Tech Platform. Discover the future of tech education and career advancement. Hear the vision firsthand.">
+
+    <!-- og:image -->
+    <meta property="og:image" content="GradiantTopImg.png">
+    <!-- (See image example explanation below) -->
+
+    <!-- og:url -->
+    <meta property="og:url" content="https://yourwebsite.com/showroom/speech-titan-tech-unveiling"> <!-- More specific URL -->
+
+    <!-- og:type -->
+    <meta property="og:type" content="article"> <!-- Use 'article' as it's a specific piece of content/event -->
+
+    <!-- og:site_name -->
+    <meta property="og:site_name" content="Mirror Network">
+
+
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="Showroom.css">
+    <link rel="icon" href="logo.jpg">
+  <style>
+    #gradient-shape {
+      border-radius: 10% 30% 20% 30%;
+	mask-image: radial-gradient(
+		circle 50vw at 0% 0%,
+		white 90%,
+		transparent 90%,
+		transparent
+		
+	);
+
+	/* the magic bit */
+	float: left;
+	shape-outside: radial-gradient(
+		circle 50vw at 0% 0%,
+		white 90%,
+		transparent 90%,
+		transparent
+	);
+	shape-image-threshold: .1;
+}
+
+section {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	max-width: 100vw;
+	margin: 0;
+}
+h2 {
+	text-align: center;
+	line-height: 0.8;
+	margin-block-end: 1lh;
+	font-size: 3.5rem;
+	background: linear-gradient(to bottom, blue,green);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+h1{
+	text-align: center;
+	line-height: 0.8;
+	margin: 0;
+	font-size: 3rem;
+	color: blue;
+  -
+}
+p {
+	line-height: 0.9;
+	font-weight: 500;
+	font-size: 2.5rem;
+	text-indent: 30px;
+	margin-bottom: 2px;
+}
+.more {
+	font-size: 0.75em;
+	text-align: center;
+}
+.logo {
+	width: 40%;
+margin-right: 20px;
+}
+.BelowHeadimg{
+  width: 100%;
+  height: 100%;
+}
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	
+}
+/* BEFORE */
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  height: 100%;
+  overflow: hidden; /* REMOVE OR CHANGE THIS */
+  font-family: system-ui, sans-serif;
+  font-size: 16pt; /* Use rem for scalability */
+}
+
+/* AFTER */
+body {
+  display: flex; /* Use flexbox for easier centering on all screens */
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Center horizontally */
+  min-height: 100vh;
+  height: auto; /* Let height adjust to content */
+  /* Remove overflow: hidden; */
+  font-family: system-ui, sans-serif;
+  font-size: 100%; /* Base font size, 1rem = 16px by default */
+  margin: 0; /* Ensure no default body margin */
+  padding: 0;
+  overflow: hidden; /* Prevent horizontal scroll only if absolutely necessary */
+}
+ ul{
+      padding-top: 1px;
+      padding-left: 30px;
+    }
+    li::before{
+      content: "€->";
+      color: dodgerblue;
+      font-size: 120%;
+      font-weight: bolder;
+      padding-right: 3px;
+    }
+    li{
+    	line-height: 0.94;
+    	font-size: 2.5rem;
+    }
+       .glas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%; /* Adjust the width as needed */
+  height: 100%; /* Adjust the height as needed */
+  background: rgba(255, 255, 255, 0.5);
+backdrop-filter: blur(1px);
+-webkit-backdrop-filter: blur(60px);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /* Adjust the background color and opacity */
+  border-radius: 10px; /* Optional: add rounded corners */
+  z-index: -1;
+}
+
+
+
+
+@media (max-width: 480px) {
+    .liquidGlass-wrapper {
+        width: 98%; /* Even wider on small screens */
+        margin: 10px auto;
+        min-height: 90vh; /* Adjust for mobile viewing */
+    }
+    .liquidGlass-text {
+        max-height: 85vh; /* Adjust for mobile viewing */
+    }
+}
+   
+   /* LIQUID GLASS STYLES */
+
+.liquidGlass-wrapper {
+  position: relative;
+  display: flex;
+  font-weight: 600;
+  overflow: hidden;
+padding: 0;
+/* AFTER */
+  /* ... existing styles ... */
+  width: 95%; /* Slightly more fluid */
+  max-width: 100vw; /* Max width for large screens */
+  min-height: 90vh; /* Ensure it takes up space, but can grow */
+  height: auto; /* Let height adjust to content */
+  margin: 20px auto; /* Center it with auto margins */
+
+
+justify-content: center;
+justify-items: center;
+  color: black;
+  cursor: pointer;
+margin: 0;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.liquidGlass-effect {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+padding: 0;
+  backdrop-filter: blur(4px);
+  filter: url(#glass-distortion);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.liquidGlass-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.5),
+    inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.liquidGlass-text {
+  margin: 0 auto;
+  justify-content: center;
+  justify-items: center;
+  z-index: 32;
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  
+  /* ... existing styles ... */
+  height: auto; /* Let content dictate height */
+  max-height: 89vh; /* Max height to ensure scrolling */
+
+}
+
+
+/* OTHER STYLES */
+
+
+.video-backd {
+  padding: 0;
+  margin: auto;
+  justify-items: center;
+  position: relative;
+  width: 100%;
+  height: auto; /* Adjust the height as needed */
+  overflow: hidden;
+}
+
+.video-backd .vido {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.video-ner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: moveBackground 60s linear infinite;
+}
+
+.video-ner .vido {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* Divide 100% by 6 (600% / 100% = 6) */
+  object-fit: cover;
+  overflow: hidden;
+}
+
+
+.wrapper {
+  display: flex;
+  gap: 5px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.menu,
+.menu > div {
+  padding: 0.4rem;
+  border-radius: 1.8rem;
+}
+
+.menu:hover {
+  padding: 0.6rem;
+  border-radius: 1.8rem;
+}
+
+.menu > div > div {
+  font-size: 20px;
+  color: black;
+  padding: 2px;
+  border-radius: 0.8rem;
+  transition: all 0.1s ease-in;
+}
+
+.menu > div > div:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: inset -2px -2px 2px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2px);
+}
+
+
+.button:hover > div {
+  border-radius: 4rem;
+}
+
+.button svg {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+
+.button:hover svg {
+  transform: scale(0.95);
+}
+
+
+
+.sparkText {
+  font-size: 2.5rem;
+ color: gold; /* Pure White */ font-weight: 700; /* Essential for headline impact */
+  line-height: 32px;
+  text-align: center;
+  
+}
+
+#labe {
+  display: block;
+  padding:  0 10px;
+  margin-bottom: 5px;
+  
+  width: 80vw;
+  height: 9vh;
+  border-radius: 20px;
+  box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  appearance: none;
+  -webkit-appearance: none;
+}
+ .container {
+            width: 60%; /* Container width */
+            text-align: left; /* Align text to the left */
+            padding: 2px 10px; /* Padding for the container */
+            box-sizing: border-box;
+            background-color: white; /* Background color for the container */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+        }
+
+
+
+        .welcome-message {
+            font-size: 1.5rem;
+            color: forestgreen;
+             /* Lighter text color */
+             font-weight: 500;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.2s ease; /* Smooth transition for opacity */
+            word-spacing: 0;
+            white-space: pre-wrap; /* Preserve spaces and allow wrapping */
+        }
+
+        .word {
+            display: inline-block; /* Allow spacing to work */
+            transition: transform 0.5s ease; /* Bounce effect */
+            opacity: 1; /* Make the word visible */
+            padding: 1px 5px; /* Padding for the word */
+            border-radius: 5px; /* Rounded corners for the word */
+        }
+
+        .bounce {
+            transform: translateY(-10px); /* Bounce effect */
+        }
+
+.final-color {
+  color: blue;
+  font-weight: bolder;
+  display: flex;
+  flex-wrap: wrap;
+}
+#greeting{
+  font-size: 2rem;
+  color: black;
+}
+  
+  
+   .final-color span::before {
+  content: attr(data-letter);
+}
+        /* Top Right Info */
+        .top-right {
+          box-sizing: border-box;
+          background-color: rgba(255, 255, 255, 0.5);
+    padding: 2px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 0;    
+    max-width: 95%;
+          width: 15%;
+            position: absolute;
+            
+           left: 80%;
+  transform: translateX(-50%);
+            color: white;
+            text-align: center;
+        }
+        .top-text {
+    font-size: 2.7rem;
+    color: forestgreen;
+    margin: 1px 0;
+    z-index: 4;
+    font-weight: bold;
+}
+ .top-left {
+            position: absolute;
+            top: 10px;
+            left: 5px;
+            color: blue;
+            font-size: 2rem;
+        }
+
+.top-righ {
+     
+position: relative ;
+box-sizing: border-box;
+left: 85%;
+      top: 0; 
+      margin: auto 0;
+        }
+
+
+@keyframes moveBackground {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(-10%); /* Move up by 500% of the viewport height */
+  }
+}
+ .loading-container {
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 1);
+backdrop-filter: blur(100px);
+-webkit-backdrop-filter: blur(60px);
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            /* Ensure matches body */
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .loading-container.fade-out {
+            opacity: 0;
+            pointer-events: none;
+            /* Prevents interaction after fade */
+        }
+
+        .loading-text {
+            font-size: 3.5em;
+            /* Adjust as needed */
+            font-weight: bold;
+            margin-bottom: 30px;
+            opacity: 0;
+            /* Start hidden */
+            transform: translateY(20px);
+            animation: fadeInSlideUp 1s ease-out forwards;
+            /* Animation for the text */
+        }
+
+        .progress-bar-wrapper {
+            width: 60%;
+            /* Adjust width of the bar */
+            max-width: 500px;
+            height: 15px;
+            background-color: rgba(255, 255, 255, 0);
+            border-radius: 10px;
+            margin: 0 auto;
+            overflow: hidden;
+            /* Crucial for the fill to be contained */
+            opacity: 0;
+            /* Start hidden */
+            transform: scaleY(0.5);
+            animation: fadeInScaleUp 1s ease-out 0.5s forwards;
+            /* Animation for the wrapper, delayed */
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            width: 0%;
+            /* Start at 0% width */
+            background-color: lightblue;
+            /* Green progress bar */
+            opacity: 0.01;
+            border-radius: 10px;
+            transition: width 0.5s ease-out;
+                        /* Smooth transition for width changes */
+        }
+/*Circuit SVG Animation*/
+
+/* BEFORE */
+
+/* AFTER */
+.loading-container svg { /* Target specifically the SVG within the loading container */
+  position: absolute;
+  top: 50%; /* Center it vertically */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90%; /* Make it fluid, occupy max 90% of parent width */
+  height: auto; /* Maintain aspect ratio */
+  width: 100%; /* Ensure it takes available width */
+  /* If the viewBox is 300x400, then the graphic content will scale within these bounds */
+}
+
+.wod { /* "Mirror Network" text */
+    font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+    font-size: 44px; /* Too large for mobile */
+    font-weight: 700;
+    fill:#50C4E8;
+}
+
+/* Add media query for SVG text */
+@media (max-width: 768px) {
+    .wod {
+        font-size: 32px; /* Smaller font for tablets */
+    }
+}
+@media (max-width: 480px) {
+    .wod {
+        font-size: 24px; /* Even smaller for phones */
+        /* Adjust x and y attributes in HTML if it's positioned awkwardly */
+    }
+}
+.path {
+  animation: draw 2.5s infinite;
+  animation-timing-function: linear;
+}
+  .dots { fill:#BCE6F9; }
+    .wod { font-family: 'Poppins', 'Montserrat', Arial, sans-serif; font-size:44px; font-weight:700; fill:#50C4E8; /* main fill */ }
+    .word-outline { fill:#50C4E8; stroke:#50C4E8; stroke-width:0.8; stroke-linejoin:round; } /* small outline option */
+@keyframes draw {
+  0% {
+  }
+  100% {
+    stroke-dashoffset: 0;
+    stroke-opacity: 1;
+  }
+}
+        /* Keyframe Animations */
+        @keyframes fadeInSlideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScaleUp {
+            to {
+                opacity: 1;
+                transform: scaleY(1);
+            }
+        }
+        .main-page {
+            
+            /* Initially hidden */
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            
+            
+            
+            
+            z-index: 999;
+        }
+
+        .main-page.fade-in {
+            display: flex;
+            /* or block, as appropriate */
+            opacity: 1;
+        }
+.span {
+  height: 300px;
+  width: 100%;
+  background-image: url("flame.png");
+  background-position: 0 -1000px;
+  
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fire 4s linear infinite;
+}
+
+
+
+@keyframes fire {
+  0% {
+    background-position: 0% -50%;
+  }
+  100% {
+    background-position: 0% -25%;
+  }
+}
+
+
+/* MEDIA QUERIES FOR TYPOGRAPHY */
+@media (max-width: 768px) {
+  h2 { font-size: 2rem; }
+  h1 { font-size: 1.8rem; }
+  p, li, .welcome-message {
+      font-size: 1rem;
+      text-indent: 1.5rem;
+  }
+  .sparkText { font-size: 1.8rem; }
+  .luxury-heading { font-size: 1.5rem; }
+  .luxury-subtitle { font-size: 0.9rem; }
+  #greeting { font-size: 1.2rem; }
+  .top-text { font-size: 1.4rem; }
+}
+
+@media (max-width: 480px) {
+  h2 { font-size: 1.6rem; }
+  h1 { font-size: 1.4rem; }
+  p, li, .welcome-message {
+      font-size: 0.9rem;
+      text-indent: 1rem; /* Smaller indent on mobile */
+  }
+  .sparkText { font-size: 1.4rem; }
+  .luxury-heading { font-size: 1.2rem; }
+  .luxury-subtitle { font-size: 0.8rem; }
+  #greeting { font-size: 1rem; }
+  .top-text { font-size: 1rem; }
+}
+  </style>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+ <div class="loading-container">
+   <svg  width="1200px" height="1200px" viewBox="0 0 300 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g id="circuit" class="path" stroke-width="1" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="1" stroke-dasharray="45, 45" stroke-dashoffset="180" fill="#fff" stroke="#02B3E4">
+           <polyline style="fill:none;stroke:#50C4E8;stroke-miterlimit:10;" points="28.651,131.726 56.151,131.726 56.151,145.726 
+      249.645,145.726 249.645,128.226     "/>
+    <circle style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" cx="28.651" cy="131.726" r="3.057"/>
+    <path style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" d="M246.588,128.226c0-1.688,1.369-3.057,3.057-3.057
+      s3.057,1.369,3.057,3.057c0,1.688-1.369,3.057-3.057,3.057S246.588,129.914,246.588,128.226z"/>
+    <line style="fill:none;stroke:#50C4E8;stroke-miterlimit:10;" x1="96.151" y1="148.118" x2="96.151" y2="241.02"/>
+    <line style="fill:none;stroke:#50C4E8;stroke-miterlimit:10;" x1="127.221" y1="148.118" x2="127.221" y2="241.02"/>
+    <line style="fill:none;stroke:#50C4E8;stroke-miterlimit:10;" x1="173.151" y1="145.726" x2="173.151" y2="203.726"/>
+    
+      <line style="fill:none;stroke:#50C4E8;stroke-width:3;stroke-miterlimit:10;" x1="207.651" y1="145.726" x2="207.651" y2="241.02"/>
+    <path style="fill:#FFFFFF;stroke:#50C4E8;stroke-width:3;stroke-miterlimit:10;" d="M104.651,184.476
+      c0-1.688,1.369-3.057,3.057-3.057s3.057,1.369,3.057,3.057s-1.369,3.057-3.057,3.057S104.651,186.164,104.651,184.476z"/>
+    <path style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" d="M93.721,145.725c0,1.342,1.088,2.431,2.43,2.431
+      s2.43-1.089,2.43-2.431c0-1.341-1.088-2.43-2.43-2.43S93.721,144.385,93.721,145.725z"/>
+    <path style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" d="M124.79,145.725c0,1.342,1.089,2.431,2.431,2.431
+      s2.43-1.089,2.43-2.431c0-1.341-1.088-2.43-2.43-2.43S124.79,144.385,124.79,145.725z"/>
+    <path style="fill:#50C4E8;stroke:#50C4E8;stroke-width:0.8121;stroke-miterlimit:10;" d="M214.543,81.409
+      c0-2.761,2.238-4.999,4.999-4.999c2.761,0,4.999,2.238,4.999,4.999c0,2.761-2.238,4.999-4.999,4.999
+      C216.782,86.408,214.543,84.17,214.543,81.409z"/>
+    <polyline style="fill:none;stroke:#50C4E8;stroke-miterlimit:10;" points="96.151,174.226 78.651,187.226 78.651,209.726     "/>
+    <polyline style="fill:none;stroke:#50C4E8;stroke-miterlimit:10;" points="96.151,209.726 104.651,220.226 104.651,236.726     "/>
+    <circle style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" cx="78.651" cy="209.726" r="3.057"/>
+    <circle style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" cx="104.651" cy="236.726" r="3.057"/>
+    <circle style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" cx="173.151" cy="202.476" r="3.057"/>
+    <path style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" d="M170.094,171.17c0-1.688,1.369-3.057,3.057-3.057
+      s3.057,1.369,3.057,3.057s-1.369,3.057-3.057,3.057S170.094,172.857,170.094,171.17z"/>
+    <path style="fill:#BCE6F5;" d="M93.357,241.02c0-1.543,1.251-2.794,2.794-2.794s2.794,1.251,2.794,2.794
+      c0,1.543-1.251,2.794-2.794,2.794S93.357,242.563,93.357,241.02z"/>
+    <circle style="fill:#BCE6F5;" cx="96.151" cy="250.976" r="2.794"/>
+    <circle style="fill:#BCE6F5;" cx="96.151" cy="163.726" r="2.794"/>
+    <path style="fill:#BCE6F5;" d="M124.426,241.02c0-1.543,1.252-2.794,2.795-2.794s2.793,1.251,2.793,2.794
+      c0,1.543-1.25,2.794-2.793,2.794S124.426,242.563,124.426,241.02z"/>
+    <path style="fill:#BCE6F5;" d="M124.426,202.476c0-1.543,1.252-2.794,2.795-2.794s2.793,1.251,2.793,2.794
+      s-1.25,2.794-2.793,2.794S124.426,204.019,124.426,202.476z"/>
+    <polyline style="fill:none;stroke:#50C4E8;stroke-width:3;stroke-miterlimit:10;" points="135.318,145.726 135.318,178.559 
+      144.984,191.976 144.984,223.226     "/>
+    
+      <line style="fill:none;stroke:#50C4E8;stroke-width:3;stroke-miterlimit:10;" x1="107.707" y1="145.726" x2="107.707" y2="182.227"/>
+    <circle style="fill:#FFFFFF;stroke:#50C4E8;stroke-width:3;stroke-miterlimit:10;" cx="144.984" cy="223.226" r="5.834"/>
+    <path style="fill:#FFFFFF;stroke:#50C4E8;stroke-width:3;stroke-miterlimit:10;" d="M201.817,241.02
+      c0-3.221,2.611-5.834,5.834-5.834s5.834,2.613,5.834,5.834c0,3.221-2.611,5.834-5.834,5.834S201.817,244.241,201.817,241.02z"/>
+    
+      <line style="fill:none;stroke:#50C4E8;stroke-width:3;stroke-miterlimit:10;" x1="207.651" y1="186.476" x2="231.401" y2="209.726"/>
+    <circle style="fill:#FFFFFF;stroke:#50C4E8;stroke-width:3;stroke-miterlimit:10;" cx="231.401" cy="209.726" r="4.193"/>
+    <line style="fill:none;stroke:#50C4E8;stroke-miterlimit:10;" x1="90.876" y1="81.409" x2="144.21" y2="81.409"/>
+    <path style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" d="M139.146,81.409c0-2.797,2.268-5.064,5.064-5.064
+      c2.797,0,5.064,2.268,5.064,5.064c0,2.797-2.268,5.064-5.064,5.064C141.414,86.473,139.146,84.206,139.146,81.409z"/>
+    <path style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" d="M87.246,81.409c0-2.005,1.625-3.631,3.631-3.631
+      c2.006,0,3.631,1.625,3.631,3.631c0,2.005-1.625,3.631-3.631,3.631C88.871,85.04,87.246,83.414,87.246,81.409z"/>
+    <polyline style="fill:none;stroke:#50C4E8;stroke-miterlimit:10;" points="117.543,68.876 160.542,68.876 177.042,81.409 
+      219.542,81.409    "/>
+    <path style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" d="M113.913,68.876c0-2.005,1.626-3.631,3.631-3.631
+      s3.631,1.626,3.631,3.631c0,2.005-1.626,3.631-3.631,3.631S113.913,70.881,113.913,68.876z"/>
+    <polyline style="fill:none;stroke:#50C4E8;stroke-width:3;stroke-miterlimit:10;" points="81.542,59.966 198.542,59.966 
+      224.875,40.518    "/>
+   
+		  <!-- decorative dots taken from the original SVG -->
+  <circle class="dots" cx="232.428" cy="40.52" r="7.551"/>
+  <circle class="dots" cx="87.246" cy="59.967" r="4.366"/>
+  <circle class="dots" cx="81.412" cy="81.41" r="4.366"/>
+
+  <!-- main brand text replacing the original path letters -->
+  <text class="wod" x="0" y="122">Mirror Network</text>
+</g>
+</svg>
+    
+       
+       <div class="progress-bar-wrapper">
+            <div class="progress-bar-fill"></div>
+        </div>
+    </div>
+
+ <section class="video-backd " style="margin-top: 0;">
+   <div id="labe">
+  <div style" width: 98%; max-width: 100;">
+  <div class="container top-left">
+    <div id="greeting">
+      Good Time!
+    </div>
+    <div class="welcome-message gradient-text" id="welcomeMessage"></div>
+  </div>
+  
+  
+</div>
+            
+    
+<div class="top-righ">
+    <img src="logo.jpg" alt="Top Right Image" style="width: 100%; max-width: 15%; border-radius: 50%; z-index: 3; box-shadow: 2px 4px 10px rgba(0,0,0,0.9);
+           " class="logo">
+  </div>
+</div>
+    <div class="glas"></div>
+    <div class="video-ner" style="z-index: -2;">
+  <video loop muted autoplay poster="" class="vido">
+    <source src="ObjBg.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+</div>
+ 
+	<div class="liquidGlass-wrapper menu main-page" >
+<div class="liquidGlass-effect"></div>
+<div class="liquidGlass-tint"></div>
+<div class="liquidGlass-shine"></div>
+<div class="liquidGlass-text">  
+
+<header class="headline" style="margin: 0;" data-aos="fade-down" data-aos-duration="500">
+  
+  
+  <h1>
+   <span class="spn">Unlock</span> <span class="spn">Advanced</span>  <span class="spn">Tech</span> <span class="spn">Skills.</span></h1>
+   <h1>
+  <span class="spn">Conquer</span> <span class="spn">Real-World</span> <span class="spn">Challenges.</span></h1>
+  <h1>
+  <span class="spn">Shape</span> <span class="spn">Your</span> <span class="spn">Future.<span>
+  </h1>
+  <h1>
+  <span class="spn">And</span> <span class="spn">Lead</span> <span class="spn">the</span> <span class="spn">Tech</span> <span class="spn">Future.</span>
+  </h1>
+  
+</header>
+
+  <div class="slider">
+  <div class="slides">
+    <img src="ShowroomPic.gif" class="slide active"/>
+    <img src="ShowroomPic2.jpg" class="slide" />
+    <img src="ShowroomPic1.png" class="slide" />
+  </div>
+
+  <div class="bottom-center">
+    <h3 class="luxury-heading" style="font-size: 1.8rem;">If You Don't Build Your Own Dream, Someone Will Hire You To Build Their's.</h3>
+<h3 style="font-size: 1.4rem; text-align: center;">Play With The Best Die Like The Rest</h3>
+    
+
+    <div class="indicators">
+      <span class="dot active" onclick="showSlide(0)"></span>
+      <span class="dot" onclick="showSlide(1)"></span>
+      <span class="dot" onclick="showSlide(2)"></span>
+    </div>
+  </div>
+</div>
+<p style="text-indent: 120px;" >
+  Aight, you've arrived at a critical junction. <br>
+  On one side, you perceive the vast, often abstract landscape of theoretical tech knowledge. <br> 
+  On the other, the urgent, practical demand for demonstrable skill. <br>
+  The critical gap between them? <br>
+  That’s where many aspiring innovators find themselves irrevocably stuck – like a program caught in an infinite loop of learning without execution.
+</p>
+<p>
+  And in this era, that gap widens with every passing moment. <br>
+  We live in the relentless current of technological evolution, where yesterday's cutting-edge is today's legacy system. <br>
+  You see the headlines everywhere: 'AI is revolutionizing everything,' 'Blockchain is the future of security,' 'Quantum computing is here.' <br />
+  It’s exhilarating, yes. <br />
+  But it's also overwhelming, and frankly, it can feel like trying to download a petabyte of data onto a floppy disk – the potential is immense, but the delivery mechanism is critically mismatched.
+</p>
+<p >
+  You can recite the syntax, you can understand the frameworks, you can even grasp the abstract concepts of AI and advanced databases. <br>
+  You're absorbing the information. <br>
+  But the crucial question remains: <b>Are you truly building with it?</b> <br>
+  Are you equipped to not just witness the future, but to actively architect it?
+</p>
+<p>
+  At Mirror Network, we understand this fundamental challenge. <br>
+  We are not just keeping pace with change; we are engineering the tools to help you lead it. <br>
+  Mirror Network is your debugger for career aspirations, your compiler for practical expertise.
+</p>
+
+
+<hr style="width: 100%; color: gold; height: 20px;">
+<div style="border-radius: 20px; width: 99.5%; padding: 20px 10px; background: rgba(0,0,0,0.6); color: white;">
+  	<img id="gradient-shape" src="gallery3.gif" alt="" style="width: 40%;
+margin-right: 30px;" >
+  <p >
+    
+    Now, let's get serious. I am Prince Zola the CEO of this noble platform , and I'm thrilled to be here today to talk about an upcoming titan tech platform that's not just a platform, but a complete framework for building your future in technology. <br>
+    Today, we discuss <b>Mirror Network</b>.
+  </p>
+  <p>
+    In a world that's changing faster than a codebase after a surprise feature request, staying ahead in technology isn't just an advantage; it's a necessity. <br>
+    We’ve all seen it. <bdo dir="rtl"></bdo>
+    The tech industry is a tidal wave of innovation, and the question isn't if it's changing, but how fast are you keeping up?
+  </p>
+  <p>
+    This is precisely why Mirror Network was established. Our purpose is bold: to reshape the tech industries and to bring you, the audience, truly in pace with this rapid evolution. <br>
+    We’re not just about teaching; we’re about empowering. <br>
+    We’re diving deep into advanced Web Development, the critical world of Ethical Hacking, robust Databases, indispensable Spreadsheets, cutting-edge Software Development, the foundational pillars of Programming and more.
+  </p>
+  <p>
+    You might be thinking, 'There are already so many platforms out there.' <br>
+    And you'd be right. But here's where Mirror Network brings a fundamental shift. <br>
+    We believe in practicals, not just theories.
+    <br>We’ve all been there – spending hours reading, only to realize you still can't do what you read. <br>
+    Mirror Network cuts through that. We’re here to build your skills, to give you the confidence to not just understand code, but to write it, to secure systems, to analyze data, and to innovate.
+  </p>
+  <b style="color: gold; font-size: 3rem; text-align: center;">So, who are we talking to?</b>
+  <p>
+    We're talking to you – the JHS and SHS students with a burning passion for tech, even if your curriculum doesn't offer that elective. <br>
+    We're talking to the serious SHS students taking Elective-ICT, who know that practical skills are the key to immediate opportunity.
+    <br>
+     <br>
+    And of course, to our Tertiary students offering Computer Science and IT – and even those outside these programs who are drawn to the world of tech. We see you. 
+  </p>
+  
+</div>
+
+
+<hr style="width: 100%; color: gold; height: 20px;">
+<div style="border-radius: 20px; width: 99.5%; padding: 20px 10px; background: rgba(0,0,0,0.5); color: white; justify-content: center;">
+  <h3 style="color: blue; font-size: 2.5rem; text-align: center; line-height: 43px;">We are acutely aware of the challenges in the tech fields, and Mirror Network is built to address them head-on:</h3>
+  <fieldset>
+    <legend style="font-size: 2rem; color: gold;"><span>Bridging the Skills Gap (SHS & Technical)</span></legend>
+    <ul>
+      <li>
+    <p>
+      Let's address a critical disparity in our educational frameworks. <br> Traditionally, at the SHS level, the curriculum often prioritizes theoretical knowledge, with exceptions for students in Visual Arts or specialized technical streams who receive a more balanced blend of knowledge and applied skills. This creates a divide. <br>
+While technical students gain practical competencies, allowing them to potentially monetize their skills even during their studies and secure lucrative opportunities post-graduation, many SHS students, even those offering ICT electives, may find themselves with a foundational understanding but lacking the deployable, market-ready skills.
+    </p>
+    <p>
+      <b style=" color: gold; font-size: 2.5rem;">What kind of skills are we discussing?</b> We're talking about the tangible, in-demand IT competencies that translate directly into real-world value.  <br>
+      A dedicated SHS student who seizes the opportunity to focus on Elective-ICT can absolutely develop the practical acumen to compete with their serious technical school counterparts. <br>
+      The difference lies in the immediate applicability: a technical student might already be building revenue streams while in school. <br>
+      If circumstances prevent further education, these skills become an immediate pathway to financial independence, minimizing future career stress. The same applies to our serious SHS students in Visual Arts or ICT – the potential to generate income during and after school is significant.
+<br>
+Mirror Network's mission is to empower you to identify your unique potential and leverage your available opportunities to build a robust foundation in tech. <br> 
+Whether you're currently in SHS or a graduate who feels opportunities were missed, it's not too late. <br>
+Mirror Network is here to equip you with the practical expertise you need to succeed.
+    </p></li>
+    </ul>
+  </fieldset>
+  <fieldset>
+    <fieldset>
+    <legend style="font-size: 2rem; color: gold;"><span>Tertiary Education & Career Launch</span></legend>
+    <ul>
+<li> <p>Turning our focus to tertiary institutions, for students pursuing Computer Science and IT programs – and indeed, for any student with a passion for technology – Mirror Network is your dedicated guide. <br> 
+We bridge the gap between academic certification and true tech industry readiness. <br>
+Too often, students complete 2, 3, or even 4 years of intensive study, obtaining a degree, yet still lack the practical, nuanced understanding of how the industry truly operates – the 'game,' as it were.
+<br>
+This can lead to post-graduation disillusionment, forcing individuals to seek foundational tech training, incurring additional costs and delays, after significant investment in their formal education.</p>
+<p>
+Mirror Network eliminates that uncertainty. <br>
+We are here to ensure your tertiary education becomes a powerful launchpad, equipping you with the critical skills and insights to become the influential tech enthusiast you aspired to be from the moment you chose your field.   </p>
+</li>
+    </ul>
+  </fieldset>
+  
+  <fieldset>
+    <legend style="font-size: 2rem; color: gold;"><span>Navigating the AI Era</span></legend>
+    <ul>
+      <li>
+        <p>
+  We are undeniably in the AI era, an epoch defined by rapid innovation. <br>
+  Daily, the internet floods with content on AI development, programming, and transformative applications. <br>
+  It's an exciting time, inspiring confidence in what's possible. <br />
+  However, it's crucial to maintain perspective.
+  <br>Consider the bedrock of Silicon Valley: many of its most impactful tech giants were founded by individuals who didn't complete traditional degrees. <br>
+  Yet, these same innovators often sought out top-tier college graduates to help execute their visions.
+  <br>This dynamic highlights that profound technological breakthroughs often stem from practical, boundary-pushing application, not solely from academic credentials.
+</p>
+<p>
+Mirror Network is here to demystify this landscape, particularly for beginners navigating the complex world of AI. <br>
+We provide the guidance to translate the excitement and the overwhelming volume of online content into concrete understanding and actionable skills.
+        </p>
+      </li>
+    </ul>
+  </fieldset>
+</div>
+
+
+<br>
+
+<p>
+  We're not just teaching skills; we're fostering a community. <br>
+  Mirror Network aims to be a hub in Ghana where students from all levels – SHS, tertiary, and beyond – can connect, share ideas, collaborate, and potentially form teams to create groundbreaking projects that can change the world. <br>
+  Imagine building the next big thing, right here in Ghana!
+</p>
+<p>
+  At Mirror Network, we are committed to helping you identify your potential, seize the opportunities available, and build a formidable career in the tech fields. <br>
+  We are your practical guide, your collaborative space, and your launchpad to a future where you don't just participate in technology – you shape it.
+</p>
+<b style="font-size: 2rem;">Thank you!</b>
+<div style="width: 95%; height: 40%;">
+  <img src="GradiantTopImg.png" alt="GradiantTopImg.png" class="BelowHeadimg">
+</div>
+
+<br>
+<br/>
+<br>
+<br>
+<br>
+<!-- partial -->
+  </div>
+	</div>
+	</section>
+	 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	 <script src="Showroom.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const progressBarFill = document.querySelector('.progress-bar-fill');
+            const loadingContainer = document.querySelector('.loading-container');
+                        const mainPage = document.querySelector('.main-page');
+            const animationDuration = 4000; // Total time for the animation (e.g., 4 seconds)
+            const steps = 100; // Number of steps to simulate
+            const totalSplashTime = 3000; // 30 seconds
+            
+            // Function to update the progress bar
+            function updateProgress(currentStep, totalSteps, duration) {
+                const percentage = (currentStep / totalSteps) * 100;
+                progressBarFill.style.width = percentage + '%';
+                
+                if (currentStep < totalSteps) {
+                    setTimeout(() => {
+                        updateProgress(currentStep + 1, totalSteps, duration);
+                    }, duration / totalSteps);
+                } else {
+                    // Animation complete - Initiate transition after loading animation.
+                    setTimeout(() => {
+                                loadingContainer.classList.add('fade-out');
+                                mainPage.classList.add('fade-in');
+                                
+                                // Wait for fade-in to almost complete (2 seconds before end) before triggering AOS.
+                                setTimeout(() => {
+                                    AOS.init({
+                                        duration: 1000,
+                                        offset: 150,
+                                        easing: 'ease-in-out',
+                                    });
+                                }, 800); // 1 second transition duration - 200ms = 800ms to start AOS effects
+                    }, 500); // Short delay after progress completes
+                }
+            }
+
+            // Start progress bar animation after page loaded
+            setTimeout(() => {
+                updateProgress(0, steps, animationDuration);
+            }, (totalSplashTime - animationDuration - 500)); // total splash time-animation time - pause after animation = timeout. e.g.(30000-4000-500= 25500ms (25.5 seconds) to kick-off process)
+        });
+    </script>
+	 <script>
+        const bottomClick = document.querySelector('.bottom-click');
+        const hiddenContent = document.querySelector('.hidden-content');
+        const topSection = document.querySelector('.top-section');
+        const glassContainer = document.querySelector('.glass-container');
+        const homeIcon = document.getElementById('homeIcon');
+        const menuIcon = document.getElementById('menuIcon'); // Get the menu icon
+        const navPod = document.getElementById('navPod');  // Get the nav pod
+        const greetingDiv = document.getElementById('greeting'); // Get the greeting div
+
+        function updateGreeting() {
+            const now = new Date();
+            const hour = now.getHours();
+            let greetingText = "Good morning";
+
+            if (hour >= 12 && hour < 18) {
+                greetingText = "Good afternoon";
+            } else if (hour >= 18) {
+                greetingText = "Good evening";
+            }
+
+            greetingDiv.textContent = "Hi " + greetingText + "!";
+        }
+
+        // Call updateGreeting when the page loads
+        updateGreeting();
+
+        // "Click For More" functionality
+        bottomClick.addEventListener('click', () => {
+            hiddenContent.classList.add('show');
+            topSection.classList.add('show');
+            glassContainer.classList.add('hidden'); // Make the glass disappear smoothly
+        });
+
+        // Home icon functionality
+        homeIcon.addEventListener('click', () => {
+            hiddenContent.classList.remove('show');
+            topSection.classList.remove('show');
+            glassContainer.classList.remove('hidden'); // Bring the glass back
+        });
+
+        // Dropdown menu functionality (from your code)
+        menuIcon.addEventListener('click', function() {
+            navPod.classList.toggle('show');
+            menuIcon.classList.toggle('close');
+        });
+
+    </script>
+	<script>
+  const message = document.getElementById('welcomeMessage');
+        const words = "Welcome to the Mirror Network Showroom. Witness the innovation of our upcoming Titan Tech platform."
+        
+        /*You are welcome to Bishop Herman College Website."*/.split(' '); // Split the message into words
+
+        // Function to display words one by one with typing effect
+        function displayWords() {
+            message.innerHTML = ''; // Clear previous message
+            let index = 0;
+
+            const typeWord = (word) => {
+                let letterIndex = 0;
+                const wordSpan = document.createElement('span');
+                wordSpan.className = 'word'; // Add class for styling
+                message.appendChild(wordSpan); // Append the word span to the message
+
+                // Typing effect for each letter
+                const typeInterval = setInterval(() => {
+                    if (letterIndex < word.length) {
+                        wordSpan.innerText += word[letterIndex]; // Add the next letter
+                        letterIndex++;
+                    } else {
+                        clearInterval(typeInterval); // Stop typing the word
+                        wordSpan.classList.add('bounce'); // Add bounce effect
+                        setTimeout(() => {
+                            wordSpan.classList.remove('bounce'); // Remove bounce effect
+                            index++; // Move to the next word
+                            if (index < words.length) {
+                                setTimeout(() => typeWord(words[index]), 1000); // Wait before typing the next word
+                            } else {
+                                // After all words are typed, change color
+                                setTimeout(() => {
+                                    message.classList.add('final-color'); // Change color of the entire message
+                                }, 500); // Wait before changing color
+                            }
+                        }, 200); // Duration of bounce effect
+                    }
+                }, 100); // Typing speed
+            };
+
+            // Make the welcome message visible before starting to type
+            message.style.opacity = 1; // Make the welcome message visible
+            typeWord(words[index]); // Start typing the first word
+        }
+
+        // Start displaying words after 5 seconds
+        window.onload = () => {
+            setTimeout(displayWords, 2000);
+        };
+</script>
+     <script>
+      const text = document.querySelector('.gradient-text');
+const letters = text.textContent.split('');
+
+text.innerHTML = '';
+letters.forEach((letter) => {
+  const span = document.createElement('span');
+  span.setAttribute('data-letter', letter);
+  text.appendChild(span);
+});
+    </script>
+</body>
+</html>
