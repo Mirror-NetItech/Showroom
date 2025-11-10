@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquid Glass Interface</title>
+    <style>
+      :root {
+    --nav-height: 7vh;
+    --gap-size: 0.1vh; /* Space between nav and main content */
+    --main-content-height: calc(100vh - 14vh);
+    --text-color: #f0f0f0;
+    --glass-color: rgba(255, 255, 255, 0.05);
+    --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+/* --- Base Setup --- */
+• {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevents the entire body from scrolling */
+    max-width: 100vw;
+    background: #000;
+}
+
+/* --- Splash Screen --- */
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 5s ease-in-out; /* Long transition for gradual fade out */
+}
+
+.splash-content {
+    text-align: center;
+    padding: 20px;
+}
+
+/* --- App Container (Starts Hidden) --- */
+#app-container {
+    opacity: 0;
+    transition: opacity 5s ease-in-out; /* Long transition for gradual fade in */
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    justify-content: center;
+    justify-items: center;
+    margin: 0;
+}
+
+/* --- Video Background --- */
+#video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure it's behind everything */
+}
+
+#bg-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- Navigation Bar (7vh) --- */
+#navbar {
+    position: fixed;
+    top: 0.1vh;
+    width: 90%;
+    height: var(--nav-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2vw;
+    z-index: 10;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 0;
+    margin-top: 0;
+    /* Glassmorphism for Nav */
+    box-sizing: border-box;
+    background: var(--glass-color);
+    backdrop-filter: blur(15px);
+    border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+    
+    /* Shadow for visibility gap */
+    box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+.nav-brand {
+    color: var(--text-color);
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+nav a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin-left: 20px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+nav a:hover {
+    opacity: 1;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+/* --- Main Content Layout --- */
+#main-content-wrapper {
+    /* Pushes content down below the nav and creates the gap */
+ margin-top: calc(var(--nav-height) );
+ justify-content: center;
+ justify-items: center;
+ overflow: hidden;
+ justify-self: center;
+    height: var(--main-content-height);
+    width: 100vw;
+    padding: 0; /* Padding for the shadow */
+    margin-bottom: 0;
+    
+}
+
+/* --- Glass Layer (The Scrollable Area) --- */
+#glass-layer {
+    height: 98%;
+    width: 97%;
+    padding: 2px;
+    margin: 0 auto;
+    /* Crucial: Only this element scrolls */
+    overflow-y: auto; 
+    overflow-x: hidden;
+    
+    /* Planar Glass Effect */
+    background: var(--glass-color);
+    backdrop-filter: blur(5px) saturate(50%);
+    border-radius: 15px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    
+    /* Shadow for visibility */
+    box-shadow: 10px 50px 10px 32px var(--shadow-color);
+    
+    /* Liquid Glass Effect Simulation (Subtle animation) */
+    /* We use a slight, subtle shift on the layer itself */
+    animation: subtle-shift 60s infinite alternate ease-in-out;
+}
+
+@keyframes subtle-shift {
+    0% { transform: perspective(1000px) rotateX(0deg) scale(1); }
+    100% { transform: perspective(1000px) rotateX(0.1deg) scale(1.005); }
+}
+
+
+#scrollable-content {
+    padding: 1px 1vw;
+    color: var(--text-color);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+#scrollable-content h1 {
+    
+    
+}
+.headline h1{
+	text-align: center;
+	line-height: 0.8;
+	margin: 0;
+	font-size: 1rem;
+	color: var(--text-color);
+	text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  
+}
+
+/* --- Scrolling Animation Styles --- */
+
+.scroll-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 5px;
+    margin: 40px 0;
+    border-radius: 10px;
+    border-left: 5px solid rgba(255, 255, 255, 0.5);
+    
+    /* Initial state (Hidden/Off-screen) */
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-item p {
+  margin-top: 2.5px;
+    margin-bottom: 2.5px;
+    font-size: 1rem;
+    color: white;
+    font-weight: 550;
+}
+
+/* Active state (Visible) */
+.scroll-item.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Optional: Different style for wide content */
+.scroll-item.wide {
+    border-left: 5px solid #ffcc66;
+}
+
+/* --- Responsiveness --- */
+@media (max-width: 768px) {
+    #navbar {
+        flex-direction: column;
+        width: 98%;
+        height: 11vh;
+        padding: 0 5px;
+    }
+    .nav-brand {
+        margin-bottom: 10px;
+    }
+    nav a {
+        margin: 0 10px;
+        font-size: 0.9em;
+    }
+    
+    /* Recalculate main content height for smaller screens */
+    #main-content-wrapper {
+     margin-top: calc(var(--nav-height) + var(--gap-size) + 32px); /* Adjust based on new nav height */
+        height: calc(100vh - (var(--nav-height) + var(--gap-size) + 87px));
+    
+    }
+
+    .headline h1{
+        font-size: 1.5rem;
+    }
+}
+ #gradient-shape {
+      border-radius: 10% 30% 20% 30%;
+	mask-image: radial-gradient(
+		circle 50vw at 0% 0%,
+		white 90%,
+		transparent 90%,
+		transparent
+		
+	);
+
+	/* the magic bit */
+	float: left;
+	shape-outside: radial-gradient(
+		circle 50vw at 0% 0%,
+		white 90%,
+		transparent 90%,
+		transparent
+	);
+	shape-image-threshold: .1;
+}
+
+    </style>
+    <link rel="stylesheet" href="Show.css">
+</head>
+<body>
+
+    <!-- 1. SPLASH SCREEN (Starts visible) -->
+    <div id="splash-screen">
+        
+           <svg  width="1200px" height="1200px" viewBox="0 0 300 400" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <g id="circuit" class="path" stroke-width="1" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="1" stroke-dasharray="45, 45" stroke-dashoffset="180" fill="#fff" stroke="#02B3E4">
+           <polyline style="fill:none;stroke:#50C4E8;stroke-miterlimit:10;" points="28.651,131.726 56.151,131.726 56.151,145.726 
+      249.645,145.726 249.645,128.226     "/>
+    <circle style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" cx="28.651" cy="131.726" r="3.057"/>
+    <path style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" d="M246.588,128.226c0-1.688,1.369-3.057,3.057-3.057
+      s3.057,1.369,3.057,3.057c0,1.688-1.369,3.057-3.057,3.057S246.588,129.914,246.588,128.226z"/>
+    <line style="fill:none;stroke:#50C4E8;stroke-miterlimit:10;" x1="96.151" y1="148.118" x2="96.151" y2="241.02"/>
+    <line style="fill:none;stroke:#50C4E8;stroke-miterlimit:10;" x1="127.221" y1="148.118" x2="127.221" y2="241.02"/>
+    <line style="fill:none;stroke:#50C4E8;stroke-miterlimit:10;" x1="173.151" y1="145.726" x2="173.151" y2="203.726"/>
+    
+      <line style="fill:none;stroke:#50C4E8;stroke-width:3;stroke-miterlimit:10;" x1="207.651" y1="145.726" x2="207.651" y2="241.02"/>
+    <path style="fill:#FFFFFF;stroke:#50C4E8;stroke-width:3;stroke-miterlimit:10;" d="M104.651,184.476
+      c0-1.688,1.369-3.057,3.057-3.057s3.057,1.369,3.057,3.057s-1.369,3.057-3.057,3.057S104.651,186.164,104.651,184.476z"/>
+    <path style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" d="M93.721,145.725c0,1.342,1.088,2.431,2.43,2.431
+      s2.43-1.089,2.43-2.431c0-1.341-1.088-2.43-2.43-2.43S93.721,144.385,93.721,145.725z"/>
+    <path style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" d="M124.79,145.725c0,1.342,1.089,2.431,2.431,2.431
+      s2.43-1.089,2.43-2.431c0-1.341-1.088-2.43-2.43-2.43S124.79,144.385,124.79,145.725z"/>
+    <path style="fill:#50C4E8;stroke:#50C4E8;stroke-width:0.8121;stroke-miterlimit:10;" d="M214.543,81.409
+      c0-2.761,2.238-4.999,4.999-4.999c2.761,0,4.999,2.238,4.999,4.999c0,2.761-2.238,4.999-4.999,4.999
+      C216.782,86.408,214.543,84.17,214.543,81.409z"/>
+    <polyline style="fill:none;stroke:#50C4E8;stroke-miterlimit:10;" points="96.151,174.226 78.651,187.226 78.651,209.726     "/>
+    <polyline style="fill:none;stroke:#50C4E8;stroke-miterlimit:10;" points="96.151,209.726 104.651,220.226 104.651,236.726     "/>
+    <circle style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" cx="78.651" cy="209.726" r="3.057"/>
+    <circle style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" cx="104.651" cy="236.726" r="3.057"/>
+    <circle style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" cx="173.151" cy="202.476" r="3.057"/>
+    <path style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" d="M170.094,171.17c0-1.688,1.369-3.057,3.057-3.057
+      s3.057,1.369,3.057,3.057s-1.369,3.057-3.057,3.057S170.094,172.857,170.094,171.17z"/>
+    <path style="fill:#BCE6F5;" d="M93.357,241.02c0-1.543,1.251-2.794,2.794-2.794s2.794,1.251,2.794,2.794
+      c0,1.543-1.251,2.794-2.794,2.794S93.357,242.563,93.357,241.02z"/>
+    <circle style="fill:#BCE6F5;" cx="96.151" cy="250.976" r="2.794"/>
+    <circle style="fill:#BCE6F5;" cx="96.151" cy="163.726" r="2.794"/>
+    <path style="fill:#BCE6F5;" d="M124.426,241.02c0-1.543,1.252-2.794,2.795-2.794s2.793,1.251,2.793,2.794
+      c0,1.543-1.25,2.794-2.793,2.794S124.426,242.563,124.426,241.02z"/>
+    <path style="fill:#BCE6F5;" d="M124.426,202.476c0-1.543,1.252-2.794,2.795-2.794s2.793,1.251,2.793,2.794
+      s-1.25,2.794-2.793,2.794S124.426,204.019,124.426,202.476z"/>
+    <polyline style="fill:none;stroke:#50C4E8;stroke-width:3;stroke-miterlimit:10;" points="135.318,145.726 135.318,178.559 
+      144.984,191.976 144.984,223.226     "/>
+    
+      <line style="fill:none;stroke:#50C4E8;stroke-width:3;stroke-miterlimit:10;" x1="107.707" y1="145.726" x2="107.707" y2="182.227"/>
+    <circle style="fill:#FFFFFF;stroke:#50C4E8;stroke-width:3;stroke-miterlimit:10;" cx="144.984" cy="223.226" r="5.834"/>
+    <path style="fill:#FFFFFF;stroke:#50C4E8;stroke-width:3;stroke-miterlimit:10;" d="M201.817,241.02
+      c0-3.221,2.611-5.834,5.834-5.834s5.834,2.613,5.834,5.834c0,3.221-2.611,5.834-5.834,5.834S201.817,244.241,201.817,241.02z"/>
+    
+      <line style="fill:none;stroke:#50C4E8;stroke-width:3;stroke-miterlimit:10;" x1="207.651" y1="186.476" x2="231.401" y2="209.726"/>
+    <circle style="fill:#FFFFFF;stroke:#50C4E8;stroke-width:3;stroke-miterlimit:10;" cx="231.401" cy="209.726" r="4.193"/>
+    <line style="fill:none;stroke:#50C4E8;stroke-miterlimit:10;" x1="90.876" y1="81.409" x2="144.21" y2="81.409"/>
+    <path style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" d="M139.146,81.409c0-2.797,2.268-5.064,5.064-5.064
+      c2.797,0,5.064,2.268,5.064,5.064c0,2.797-2.268,5.064-5.064,5.064C141.414,86.473,139.146,84.206,139.146,81.409z"/>
+    <path style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" d="M87.246,81.409c0-2.005,1.625-3.631,3.631-3.631
+      c2.006,0,3.631,1.625,3.631,3.631c0,2.005-1.625,3.631-3.631,3.631C88.871,85.04,87.246,83.414,87.246,81.409z"/>
+    <polyline style="fill:none;stroke:#50C4E8;stroke-miterlimit:10;" points="117.543,68.876 160.542,68.876 177.042,81.409 
+      219.542,81.409    "/>
+    <path style="fill:#FFFFFF;stroke:#50C4E8;stroke-miterlimit:10;" d="M113.913,68.876c0-2.005,1.626-3.631,3.631-3.631
+      s3.631,1.626,3.631,3.631c0,2.005-1.626,3.631-3.631,3.631S113.913,70.881,113.913,68.876z"/>
+    <polyline style="fill:none;stroke:#50C4E8;stroke-width:3;stroke-miterlimit:10;" points="81.542,59.966 198.542,59.966 
+      224.875,40.518    "/>
+   
+		  <!-- decorative dots taken from the original SVG -->
+  <circle class="dots" cx="232.428" cy="40.52" r="7.551"/>
+  <circle class="dots" cx="87.246" cy="59.967" r="4.366"/>
+  <circle class="dots" cx="81.412" cy="81.41" r="4.366"/>
+
+  <!-- main brand text replacing the original path letters -->
+  <text class="wod" x="70" y="122">Mirror Network</text>
+</g>
+</svg>
+        
+    </div>
+
+    <!-- 2. MAIN CONTAINER (Starts hidden/low opacity) -->
+    <div id="app-container">
+
+        <!-- Fixed Navigation Bar (7vh) -->
+        <header id="navbar">
+           
+  <div style" width: 98%; max-width: 100;">
+  <div class="container top-left">
+    <div id="greeting">
+      Good Time!
+    </div>
+    <div class="welcome-message gradient-text" id="welcomeMessage"></div>
+  </div>
+  
+  
+</div>
+            
+    
+<div class="top-righ">
+    <img src="logo.jpg" alt="Top Right Image" style="width: 100%; max-width: 15%; border-radius: 50%; z-index: 3; box-shadow: 2px 4px 10px rgba(0,0,0,0.9);
+           " class="logo">
+  </div>
+
+        </header>
+
+        <!-- Video Background Layer -->
+        <div id="video-background">
+            <!-- IMPORTANT: Use a small, optimized, loopable video file. -->
+            <video autoplay muted loop playsinline id="bg-video" src="ObjBg.mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <!-- Main Content Area (Scrollable Glass Layer) -->
+        <main id="main-content-wrapper">
+            <div id="glass-layer">
+                <div id="scrollable-content">
+
+                    <!-- Content Items for Scrolling Animation -->
+                    <header class="headline" style="margin: 0;" data-aos="fade-down" data-aos-duration="500">
+  
+  
+  <h1>
+   <span class="spn">Unlock</span> <span class="spn">Advanced</span>  <span class="spn">Tech</span> <span class="spn">Skills.</span></h1>
+   <h1>
+  <span class="spn">Conquer</span> <span class="spn">Real-World</span> <span class="spn">Challenges.</span></h1>
+  <h1>
+  <span class="spn">Shape</span> <span class="spn">Your</span> <span class="spn">Future.<span>
+  </h1>
+  <h1>
+  <span class="spn">And</span> <span class="spn">Lead</span> <span class="spn">the</span> <span class="spn">Tech</span> <span class="spn">Future.</span>
+  </h1>
+  
+</header>
+
+  <div class="slider">
+  <div class="slides">
+    <img src="ShowroomPic.gif" class="slide active"/>
+    <img src="ShowroomPic2.jpg" class="slide" />
+    <img src="ShowroomPic1.png" class="slide" />
+  </div>
+
+  <div class="bottom-center">
+    <p class="luxury-heading">If You Don't Build Your Own Dream, Someone Will Hire You To Build Their's.</p>
+<h3 style="text-align: center;">Play With The Best Die Like The Rest</h3>
+    
+
+    <div class="indicators">
+      <span class="dot active" onclick="showSlide(0)"></span>
+      <span class="dot" onclick="showSlide(1)"></span>
+      <span class="dot" onclick="showSlide(2)"></span>
+    </div>
+  </div>
+</div>
+
+<section >
+    <div class="wrapper" >
+      <div class="liquidGlass-wrapper menu">
+        <div class="liquidGlass-effect"></div>
+        <div class="liquidGlass-tint"></div>
+        <div class="liquidGlass-shine"></div>
+        <div class="liquidGlass-text">
+         <p style="text-indent: 20px;" >
+  Aight, you've arrived at a critical junction. <br>
+  On one side, you perceive the vast, often abstract landscape of theoretical tech knowledge. <br> 
+  On the other, the urgent, practical demand for demonstrable skill. <br>
+  The critical gap between them? <br>
+  That’s where many aspiring innovators find themselves irrevocably stuck – like a program caught in an infinite loop of learning without execution.
+</p>
+<p>
+  And in this era, that gap widens with every passing moment. <br>
+  We live in the relentless current of technological evolution, where yesterday's cutting-edge is today's legacy system. <br>
+  You see the headlines everywhere: 'AI is revolutionizing everything,' 'Blockchain is the future of security,' 'Quantum computing is here.' <br />
+  It’s exhilarating, yes. <br />
+  But it's also overwhelming, and frankly, it can feel like trying to download a petabyte of data onto a floppy disk – the potential is immense, but the delivery mechanism is critically mismatched.
+</p>
+<p >
+  You can recite the syntax, you can understand the frameworks, you can even grasp the abstract concepts of AI and advanced databases. <br>
+  You're absorbing the information. <br>
+  But the crucial question remains: <b>Are you truly building with it?</b> <br>
+  Are you equipped to not just witness the future, but to actively architect it?
+</p>
+<p>
+  At Mirror Network, we understand this fundamental challenge. <br>
+  We are not just keeping pace with change; we are engineering the tools to help you lead it. <br>
+  Mirror Network is your debugger for career aspirations, your compiler for practical expertise.
+</p>
+
+        </div>
+      </div>
+    </div>
+
+  
+</section>
+
+<section class="scroll-item">
+
+<div style="border-radius: 20px; width: 99.5%; padding: 20px 10px; background: rgba(0,0,0,0.6); color: white;">
+  	<img id="gradient-shape" src="gallery3.gif" alt="" style="width: 40%;
+margin-right: 30px;" >
+  <p >
+    
+    Now, let's get serious. I am Prince Zola the CEO of this noble platform , and I'm thrilled to be here today to talk about an upcoming titan tech platform that's not just a platform, but a complete framework for building your future in technology. <br>
+    Today, we discuss <b>Mirror Network</b>.
+  </p>
+  <p>
+    In a world that's changing faster than a codebase after a surprise feature request, staying ahead in technology isn't just an advantage; it's a necessity. <br>
+    We’ve all seen it. <bdo dir="rtl"></bdo>
+    The tech industry is a tidal wave of innovation, and the question isn't if it's changing, but how fast are you keeping up?
+  </p>
+  <p>
+    This is precisely why Mirror Network was established. Our purpose is bold: to reshape the tech industries and to bring you, the audience, truly in pace with this rapid evolution. <br>
+    We’re not just about teaching; we’re about empowering. <br>
+    We’re diving deep into advanced Web Development, the critical world of Ethical Hacking, robust Databases, indispensable Spreadsheets, cutting-edge Software Development, the foundational pillars of Programming and more.
+  </p>
+  <p>
+    You might be thinking, 'There are already so many platforms out there.' <br>
+    And you'd be right. But here's where Mirror Network brings a fundamental shift. <br>
+    We believe in practicals, not just theories.
+    <br>We’ve all been there – spending hours reading, only to realize you still can't do what you read. <br>
+    Mirror Network cuts through that. We’re here to build your skills, to give you the confidence to not just understand code, but to write it, to secure systems, to analyze data, and to innovate.
+  </p>
+  <b style="color: gold; font-size: 1.4rem; text-align: center;">So, who are we talking to?</b>
+  <p>
+    We're talking to you – the JHS and SHS students with a burning passion for tech, even if your curriculum doesn't offer that elective. <br>
+    We're talking to the serious SHS students taking Elective-ICT, who know that practical skills are the key to immediate opportunity.
+    <br>
+     <br>
+    And of course, to our Tertiary students offering Computer Science and IT – and even those outside these programs who are drawn to the world of tech. We see you. 
+  </p>
+  
+</div>
+
+</section>
+
+ <section class="scroll-item wide">
+<hr style="width: 100%; color: gold; height: 20px;">
+<div style="border-radius: 20px; width: 99.5%; padding: 20px 10px; background: rgba(0,0,0,0.5); color: white; justify-content: center;">
+  <h3 style=" color: #f0f0f0; font-size: 1.5rem; text-align: center; line-height: 0.8;">We are acutely aware of the challenges in the tech fields, and Mirror Network is built to address them head-on:</h3>
+  <fieldset>
+    <legend style="font-size: 2rem; color: gold;"><span>Bridging the Skills Gap (SHS & Technical)</span></legend>
+    <ul>
+      <li>
+    <p>
+      Let's address a critical disparity in our educational frameworks. <br> Traditionally, at the SHS level, the curriculum often prioritizes theoretical knowledge, with exceptions for students in Visual Arts or specialized technical streams who receive a more balanced blend of knowledge and applied skills. This creates a divide. <br>
+While technical students gain practical competencies, allowing them to potentially monetize their skills even during their studies and secure lucrative opportunities post-graduation, many SHS students, even those offering ICT electives, may find themselves with a foundational understanding but lacking the deployable, market-ready skills.
+    </p>
+    <p>
+      <b style=" color: gold; font-size: 1.5rem;">What kind of skills are we discussing?</b> We're talking about the tangible, in-demand IT competencies that translate directly into real-world value.  <br>
+      A dedicated SHS student who seizes the opportunity to focus on Elective-ICT can absolutely develop the practical insightfulness to compete with their serious technical school counterparts. <br>
+      The difference lies in the immediate applicability: a technical student might already be building revenue streams while in school. <br>
+      If circumstances prevent further education, these skills become an immediate pathway to financial independence, minimizing future career stress. The same applies to our serious SHS students in Visual Arts or ICT – the potential to generate income during and after school is significant.
+<br>
+Mirror Network's mission is to empower you to identify your unique potential and leverage your available opportunities to build a robust foundation in tech. <br> 
+Whether you're currently in SHS or a graduate who feels opportunities were missed, it's not too late. <br>
+Mirror Network is here to equip you with the practical expertise you need to succeed.
+    </p></li>
+    </ul>
+  </fieldset>
+  <fieldset>
+    <fieldset>
+    <legend style="font-size: 2rem; color: gold;"><span>Tertiary Education & Career Launch</span></legend>
+    <ul>
+<li> <p>Turning our focus to tertiary institutions, for students pursuing Computer Science and IT programs – and indeed, for any student with a passion for technology – Mirror Network is your dedicated guide. <br> 
+We bridge the gap between academic certification and true tech industry readiness. <br>
+Too often, students complete 2, 3, or even 4 years of intensive study, obtaining a degree, yet still lack the practical, nuanced understanding of how the industry truly operates – the 'game,' as it were.
+<br>
+This can lead to post-graduation disillusionment, forcing individuals to seek foundational tech training, incurring additional costs and delays, after significant investment in their formal education.</p>
+<p>
+Mirror Network eliminates that uncertainty. <br>
+We are here to ensure your tertiary education becomes a powerful launchpad, equipping you with the critical skills and insights to become the influential tech enthusiast you aspired to be from the moment you chose your field.   </p>
+</li>
+    </ul>
+  </fieldset>
+  
+  <fieldset>
+    <legend style="font-size: 2rem; color: gold;"><span>Navigating the AI Era</span></legend>
+    <ul>
+      <li>
+        <p>
+  We are undeniably in the AI era, an epoch defined by rapid innovation. <br>
+  Daily, the internet floods with content on AI development, programming, and transformative applications. <br>
+  It's an exciting time, inspiring confidence in what's possible. <br />
+  However, it's crucial to maintain perspective.
+  <br>Consider the bedrock of Silicon Valley: many of its most impactful tech giants were founded by individuals who didn't complete traditional degrees. <br>
+  Yet, these same innovators often sought out top-tier college graduates to help execute their visions.
+  <br>This dynamic highlights that profound technological breakthroughs often stem from practical, boundary-pushing application, not solely from academic credentials.
+</p>
+<p>
+Mirror Network is here to demystify this landscape, particularly for beginners navigating the complex world of AI. <br>
+We provide the guidance to translate the excitement and the overwhelming volume of online content into concrete understanding and actionable skills.
+        </p>
+      </li>
+    </ul>
+  </fieldset>
+</div>
+
+</section>
+
+
+<section >
+ <div class="wrapper" >
+   <div class="liquidGlass-wrapper menu">
+    <div class="liquidGlass-effect"></div>
+    <div class="liquidGlass-tint"></div>
+    <div class="liquidGlass-shine"></div>
+    <div class="liquidGlass-text">
+         <br>
+
+<p>
+  We're not just teaching skills; we're fostering a community. <br>
+  Mirror Network aims to be a hub in Ghana where students from all levels – SHS, tertiary, and beyond – can connect, share ideas, collaborate, and potentially form teams to create groundbreaking projects that can change the world. <br>
+  Imagine building the next big thing, right here in Ghana!
+</p>
+<p>
+  At Mirror Network, we are committed to helping you identify your potential, seize the opportunities available, and build a formidable career in the tech fields. <br>
+  We are your practical guide, your collaborative space, and your launchpad to a future where you don't just participate in technology – you shape it.
+</p>
+<b style="font-size: 2rem;">Thank you!</b>
+<div style="width: 98%; height: 40%;">
+  <img src="GradiantTopImg.png" alt="GradiantTopImg.png" class="BelowHeadimg">
+</div>
+
+        </div>
+      </div>
+    </div>
+
+  
+</section>
+                    <div style="height: 20vh;"></div> <!-- Extra space to ensure the last item is easily scrollable into view -->
+
+                </div>
+                  <svg style="display: none">
+      <filter
+        id="glass-distortion"
+        x="0%"
+        y="0%"
+        width="100%"
+        height="100%"
+        filterUnits="objectBoundingBox"
+      >
+        <feTurbulence
+          type="fractalNoise"
+          baseFrequency="0.01 0.01"
+          numOctaves="1"
+          seed="5"
+          result="turbulence"
+        />
+        <!-- Seeds: 14, 17,  -->
+
+        <feComponentTransfer in="turbulence" result="mapped">
+          <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+          <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+          <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+        </feComponentTransfer>
+
+        <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+
+        <feSpecularLighting
+          in="softMap"
+          surfaceScale="5"
+          specularConstant="1"
+          specularExponent="100"
+          lighting-color="white"
+          result="specLight"
+        >
+          <fePointLight x="-200" y="-200" z="300" />
+        </feSpecularLighting>
+
+        <feComposite
+          in="specLight"
+          operator="arithmetic"
+          k1="0"
+          k2="1"
+          k3="1"
+          k4="0"
+          result="litImage"
+        />
+
+        <feDisplacementMap
+          in="SourceGraphic"
+          in2="softMap"
+          scale="150"
+          xChannelSelector="R"
+          yChannelSelector="G"
+        />
+      </filter>
+    </svg>
+            </div>
+        </main>
+    </div>
+
+<script>
+      document.addEventListener('DOMContentLoaded', () => {
+  const splashScreen = document.getElementById('splash-screen');
+  const appContainer = document.getElementById('app-container');
+  const bgVideo = document.getElementById('bg-video');
+  
+  // --- 1. Splash Screen & Fading Logic ---
+  
+  // Ensure video starts playing immediately (though 'autoplay' helps, this is a fallback)
+  bgVideo.play().catch(error => {
+    console.warn("Autoplay prevented. User interaction required:", error);
+  });
+  
+  const SPLASH_DURATION_MS = 1900; // 20 seconds
+  
+  setTimeout(() => {
+    // Step 1: Start fading out the splash screen
+    splashScreen.style.opacity = '0';
+    
+    // Step 2: Start fading in the main content simultaneously
+    appContainer.style.opacity = '1';
+    
+    // Step 3: Completely remove the splash screen after the transition finishes (5 seconds)
+    setTimeout(() => {
+      splashScreen.style.display = 'none';
+    }, 5000);
+    
+  }, SPLASH_DURATION_MS);
+  
+  
+  // --- 2. Scrolling Animation (Intersection Observer) ---
+  
+  const scrollItems = document.querySelectorAll('.scroll-item');
+  scrolll = document.querySelectorAll('.wrapper');
+  // Configuration for the observer
+  const observerOptions = {
+    root: document.getElementById('glass-layer'), // The scrollable container
+    rootMargin: '0px 0px -1% 0px', // Trigger when 10% of the item is visible
+    threshold: 0.1 // Trigger when 10% of the item is visible
+  };
+  
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Element is visible: Add the active class
+        entry.target.classList.add('is-visible');
+      } else {
+        // Element is not visible: Remove the active class 
+        // This ensures the animation re-triggers when the user scrolls back up/down
+        entry.target.classList.remove('is-visible');
+      }
+    });
+  }, observerOptions);
+  
+  // Attach the observer to all content items
+  scrollItems.forEach(item => {
+    observer.observe(item);
+  });
+  scrolll.forEach(item => {
+    observer.observe(item);
+});scrolll.forEach(item => {
+observer.observe(item);
+});
+});
+    </script>
+    <script src="Showroom.js" type="text/javascript" charset="utf-8"></script>
+     <script>
+        const bottomClick = document.querySelector('.bottom-click');
+        const hiddenContent = document.querySelector('.hidden-content');
+        const topSection = document.querySelector('.top-section');
+        const glassContainer = document.querySelector('.glass-container');
+        const homeIcon = document.getElementById('homeIcon');
+        const menuIcon = document.getElementById('menuIcon'); // Get the menu icon
+        const navPod = document.getElementById('navPod');  // Get the nav pod
+        const greetingDiv = document.getElementById('greeting'); // Get the greeting div
+
+        function updateGreeting() {
+            const now = new Date();
+            const hour = now.getHours();
+            let greetingText = "Good morning";
+
+            if (hour >= 12 && hour < 18) {
+                greetingText = "Good afternoon";
+            } else if (hour >= 18) {
+                greetingText = "Good evening";
+            }
+
+            greetingDiv.textContent = "Hi " + greetingText + "!";
+        }
+
+        // Call updateGreeting when the page loads
+        updateGreeting();
+
+        // "Click For More" functionality
+        bottomClick.addEventListener('click', () => {
+            hiddenContent.classList.add('show');
+            topSection.classList.add('show');
+            glassContainer.classList.add('hidden'); // Make the glass disappear smoothly
+        });
+
+        // Home icon functionality
+        homeIcon.addEventListener('click', () => {
+            hiddenContent.classList.remove('show');
+            topSection.classList.remove('show');
+            glassContainer.classList.remove('hidden'); // Bring the glass back
+        });
+
+        // Dropdown menu functionality (from your code)
+        menuIcon.addEventListener('click', function() {
+            navPod.classList.toggle('show');
+            menuIcon.classList.toggle('close');
+        });
+
+    </script>
+	<script>
+  const message = document.getElementById('welcomeMessage');
+        const words = "Welcome to the Mirror Network Showroom. Witness the innovation of our upcoming Titan Tech platform."
+        
+        /*You are welcome to Bishop Herman College Website."*/.split(' '); // Split the message into words
+
+        // Function to display words one by one with typing effect
+        function displayWords() {
+            message.innerHTML = ''; // Clear previous message
+            let index = 0;
+
+            const typeWord = (word) => {
+                let letterIndex = 0;
+                const wordSpan = document.createElement('span');
+                wordSpan.className = 'word'; // Add class for styling
+                message.appendChild(wordSpan); // Append the word span to the message
+
+                // Typing effect for each letter
+                const typeInterval = setInterval(() => {
+                    if (letterIndex < word.length) {
+                        wordSpan.innerText += word[letterIndex]; // Add the next letter
+                        letterIndex++;
+                    } else {
+                        clearInterval(typeInterval); // Stop typing the word
+                        wordSpan.classList.add('bounce'); // Add bounce effect
+                        setTimeout(() => {
+                            wordSpan.classList.remove('bounce'); // Remove bounce effect
+                            index++; // Move to the next word
+                            if (index < words.length) {
+                                setTimeout(() => typeWord(words[index]), 1000); // Wait before typing the next word
+                            } else {
+                                // After all words are typed, change color
+                                setTimeout(() => {
+                                    message.classList.add('final-color'); // Change color of the entire message
+                                }, 500); // Wait before changing color
+                            }
+                        }, 200); // Duration of bounce effect
+                    }
+                }, 100); // Typing speed
+            };
+
+            // Make the welcome message visible before starting to type
+            message.style.opacity = 1; // Make the welcome message visible
+            typeWord(words[index]); // Start typing the first word
+        }
+
+        // Start displaying words after 5 seconds
+        window.onload = () => {
+            setTimeout(displayWords, 2000);
+        };
+</script>
+</body>
+</html>

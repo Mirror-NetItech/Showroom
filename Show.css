@@ -1,0 +1,482 @@
+ :root {
+  --hue-primary: 223;
+  --hue-secondary: 178;
+  --primary500: hsl(var(--hue-primary), 90%, 50%);
+  --primary600: hsl(var(--hue-primary), 90%, 60%);
+  --primary700: hsl(var(--hue-primary), 90%, 70%);
+  --secondary800: hsl(var(--hue-secondary), 90%, 80%);
+  --dark-gray50: hsl(var(--hue-primary), 90%, 5%);
+  --dark-gray100: hsl(var(--hue-primary), 90%, 10%);
+  --white0: hsla(0, 0%, 100%, 0);
+  --white50: hsla(0, 0%, 100%, 0.05);
+  --white100: hsla(0, 0%, 100%, 0.1);
+  --white200: hsla(0, 0%, 100%, 0.2);
+  --white300: hsla(0, 0%, 100%, 0.3);
+  --white400: hsla(0, 0%, 100%, 0.4);
+  --white500: hsla(0, 0%, 100%, 0.5);
+  --white: hsl(0, 0%, 100%);
+  font-size: clamp(0.75rem, 0.65rem + 0.5vw, 1.25rem);
+
+   --blur: 12px;
+  --width: 21.1em;
+  --height: 12.8em;
+  --move-by: 2em;
+ }
+   /* LIQUID GLASS STYLES */
+
+.liquidGlass-wrapper {
+  position: relative;
+  display: flex;
+  font-weight: 600;
+  overflow: hidden;
+
+  color: black;
+  cursor: pointer;
+
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+}
+.liquidGlass-wrapper:before, .liquidGlass-wrapper:after {
+  border-radius: inherit;
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0;
+}
+.liquidGlass-wrapper:before {
+  border: 1px solid var(--white);
+  mask-image: linear-gradient(135deg, var(--white), var(--white0) 50%);
+}
+.liquidGlass-wrapper:after {
+  border: 1px solid var(--primary500);
+  mask-image: linear-gradient(135deg, var(--white0) 50%, var(--white));
+}
+[dir=rtl] .liquidGlass-wrapper {
+  background-image: linear-gradient(-90deg, var(--white200), var(--white50));
+  left: calc(var(--move-by) * -1);
+}
+[dir=rtl] .liquidGlass-wrapper:before {
+  mask-image: linear-gradient(-135deg, var(--white), var(--white0) 50%);
+}
+[dir=rtl] .liquidGlass-wrapper:after {
+  mask-image: linear-gradient(-135deg, var(--white0) 50%, var(--white));
+}
+.liquidGlass-effect {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+
+  backdrop-filter: blur(3px);
+  filter: url(#glass-distortion);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.liquidGlass-tint {
+  z-index: 1;
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.liquidGlass-shine {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  box-shadow: inset 2px 2px 1px 0 rgba(255, 255, 255, 0.5),
+  inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.liquidGlass-text {
+  z-index: 3;
+  font-size: 1.2rem;
+  color: black;
+}
+
+.liquidGlass-text p{
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.BelowHeadimg{
+  width: 100%;
+  height: 100%;
+}
+.wrapper {
+  display: flex;
+  gap: 25px;
+  background-color: blackliquidGlass-wrapper;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+      /* Initial state (Hidden/Off-screen) */
+    opacity: 0;
+    transform: translateY(50px) scale(0.95);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+/* Active state (Visible) */
+.wrapper.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+.menu,
+.menu > div {
+  padding: 0.4rem;
+  border-radius: 1.8rem;
+}
+
+.menu:hover {
+  padding: 0.6rem;
+  border-radius: 1.8rem;
+}
+
+.menu > div > div {
+  font-size: 20px;
+  color: white;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.8rem;
+  transition: all 0.1s ease-in;
+}
+
+.menu > div > div:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+  box-shadow: inset -2px -2px 2px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2px);
+}
+
+
+
+/* AFTER */
+.loading-container svg { /* Target specifically the SVG within the loading container */
+  position: absolute;
+  top: 50%; /* Center it vertically */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90%; /* Make it fluid, occupy max 90% of parent width */
+  height: auto; /* Maintain aspect ratio */
+  width: 100%; /* Ensure it takes available width */
+  /* If the viewBox is 300x400, then the graphic content will scale within these bounds */
+}
+
+.wod { /* "Mirror Network" text */
+    font-family: 'Poppins', 'Montserrat', Arial, sans-serif;
+    font-size: 44px; /* Too large for mobile */
+    font-weight: 700;
+    fill:#50C4E8;
+}
+
+.path {
+  animation: draw 2.5s infinite;
+  animation-timing-function: linear;
+}
+  .dots { fill:#BCE6F9; }
+    .wod { font-family: 'Poppins', 'Montserrat', Arial, sans-serif; font-size:44px; font-weight:700; fill:#50C4E8; /* main fill */ }
+    .word-outline { fill:#50C4E8; stroke:#50C4E8; stroke-width:0.8; stroke-linejoin:round; } /* small outline option */
+@keyframes draw {
+  0% {
+  }
+  100% {
+    stroke-dashoffset: 0;
+    stroke-opacity: 1;
+  }
+}
+
+/* Add media query for SVG text */
+@media (max-width: 768px) {
+    .wod {
+        font-size: 32px; /* Smaller font for tablets */
+    }
+}
+@media (max-width: 480px) {
+    .wod {
+        font-size: 24px; /* Even smaller for phones */
+        /* Adjust x and y attributes in HTML if it's positioned awkwardly */
+    }
+}
+
+
+
+.slider {
+  position: relative;
+  width: 90%;
+  max-width: 100%;
+  height: 450px;
+  margin: auto;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease-in-out;
+  border-radius: 15px 15px 0 0;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 15px 15px 0 0;
+  flex-shrink: 0;
+  user-select: none;
+  pointer-events: none;
+}
+.active{
+ min-width: 100%;
+  height: auto;
+  width: 90%;
+}
+
+.slide.active {
+  pointer-events: auto;
+}
+
+.bottom-center {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  background: #fff;
+  padding: 5px 8px;
+  padding-bottom: 0;
+  
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  overflow: visible;
+  border-radius: 20px 20px 0 0;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Outer radius using pseudo-elements */
+.bottom-center::before,
+.bottom-center::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 50px;
+  height: 40px;
+  background: #fff;
+  border-radius: 0;
+  z-index: -1;
+}
+
+.bottom-center::before {
+  left: -30px;
+  bottom: -10px;
+  mask: radial-gradient(30px at top left, #0000 98%, #000);
+}
+
+.bottom-center::after {
+  right: -30px;
+  bottom: -10px;
+  mask: radial-gradient(30px at top right, #0000 98%, #000);
+}
+
+.bottom-center h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.bottom-center p {
+  margin: 0;
+  text-align: center;
+  color: #666;
+  font-size: 1rem;
+}
+
+.luxury-heading {
+  font-family: "Gloock", serif;
+  font-weight: 700;
+  font-size: 2.9rem;
+  color: #2c2a29; /* deep charcoal */
+  letter-spacing: 0.05em;
+  margin-bottom: 0.3em;
+  text-transform: capitalize;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.indicators {
+  display: flex;
+  justify-content: center;
+  gap: 1px;
+  margin-top: px;
+}
+
+.dot {
+  height: 10px;
+  width: 10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #333;
+}
+
+
+@media(max-width: 768px){
+  .slider {
+    width: 95%;
+    height: 220px;
+  }
+  .slider{
+    border-radius: 10px;
+  }
+  .btn{
+    margin: 5px;
+  }
+  .bottom-center {
+    width: 80%;
+    font-size: 1.2rem;
+    border-radius: 10px;
+  }
+  .bottom-center::before {
+  left: -20px;
+  bottom: -20px;
+  mask: radial-gradient(20px at top left, #0000 98%, #000);
+}
+
+.bottom-center::after {
+  right: -20px;
+  bottom: -20px;
+  mask: radial-gradient(20px at top right, #0000 98%, #000);
+}
+}
+
+@media(max-width: 414px){
+  .bottom-center{
+    border-radius: 10px 10px 0 0;
+  }
+   .btn{
+    width: 100%;
+    margin: 5px 0;
+  }
+   .bottom-center::before,.bottom-center::after {
+    display: none;
+}
+
+}
+
+
+#labe {
+  display: block;
+  padding:  0 10px;
+  margin-bottom: 5px;
+  
+  width: 80vw;
+  height: 9vh;
+  border-radius: 20px;
+  box-shadow: inset 2px 2px 5px #BABECC, inset -5px -5px 10px #FFF;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  appearance: none;
+  -webkit-appearance: none;
+}
+ .container {
+            width: 76%; /* Container width */
+            margin: 0;
+            text-align: left; /* Align text to the left */
+            padding: 2px 1px; /* Padding for the container */
+            box-sizing: border-box;
+            background-color: white; /* Background color for the container */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+        }
+
+
+
+        .welcome-message {
+  font-size: 0.9rem;
+  line-height: 0.7;
+  color: forestgreen;
+             /* Lighter text color */
+font-weight: 500;
+opacity: 0; /* Initially hidden */
+transition: opacity 0.2s ease; /* Smooth transition for opacity */
+ word-spacing: 0;
+white-space: pre-wrap; /* Preserve spaces and allow wrapping */
+        }
+
+        .word {
+            display: inline-block; /* Allow spacing to work */
+            transition: transform 0.5s ease; /* Bounce effect */
+            opacity: 1; /* Make the word visible */
+            padding: 1px 5px; /* Padding for the word */
+            border-radius: 5px; /* Rounded corners for the word */
+        }
+
+        .bounce {
+            transform: translateY(-10px); /* Bounce effect */
+        }
+
+.final-color {
+  color: blue;
+  font-weight: bolder;
+  display: flex;
+  flex-wrap: wrap;
+}
+#greeting{
+  font-size: 1.2rem;
+  color: black;
+}
+  
+  
+   .final-color span::before {
+  content: attr(data-letter);
+}
+        /* Top Right Info */
+        .top-right {
+          box-sizing: border-box;
+          background-color: rgba(255, 255, 255, 0.5);
+    padding: 2px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin: 0;    
+    max-width: 95%;
+          width: 15%;
+            position: absolute;
+            
+           left: 80%;
+  transform: translateX(-50%);
+            color: white;
+            text-align: center;
+        }
+        .top-text {
+    font-size: 2.7rem;
+    color: forestgreen;
+    margin: 1px 0;
+    z-index: 4;
+    font-weight: bold;
+}
+ .top-left {
+            position: absolute;
+            top: 1px;
+            left: 5px;
+            color: blue;
+            font-size: 2rem;
+        }
+
+.top-righ {
+     
+position: relative ;
+box-sizing: border-box;
+left: 85%;
+      top: 0; 
+      margin: auto 0;
+        }
+
